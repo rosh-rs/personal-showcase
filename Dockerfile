@@ -2,13 +2,13 @@
 FROM nginx:alpine
 
 # Set the working directory in the container
-WORKDIR /My_portfolio
+WORKDIR /usr/share/nginx/html
 
-COPY package*.json ./
 # Copy the static website files to the Nginx web root directory
 COPY . .
 
+# Copy custom nginx configuration file
+COPY nginx.conf /etc/nginx/nginx.conf
+
 # Expose port 80 to serve the website
 EXPOSE 80
-
-# No need to specify a command as the default command of Nginx image is to start the Nginx server
